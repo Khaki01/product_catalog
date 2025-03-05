@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Product Catalog</title>
+    <style>
+      .container {
+        display: flex;
+        gap: 2rem;
+      }
+      .filters {
+        width: 250px;
+      }
+      .products {
+        flex: 1;
+      }
+      .filter-group {
+        margin-bottom: 1.5rem;
+      }
+      .filter-group h3 {
+        margin: 0 0 1rem 0;
+      }
+      .filter-item {
+        margin: 0.25rem 0;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Product Catalog</h1>
+
+    <form method="get">
+      <!-- Search -->
+      <div class="search-bar" style="margin-bottom: 2rem">
+        <input
+          type="text"
+          name="search"
+          placeholder="Search descriptions..."
+          value="{{ search_query }}"
+          style="width: 300px; padding: 0.5rem"
+        />
+      </div>
+
+      <div class="container">
+        <!-- Filters Sidebar -->
+        <div class="filters">
+          <!-- Categories Filter -->
+          <div class="filter-group">
+            <h3>Categories</h3>
+            {% for category in categories %}
+            <div class="filter-item">
+              <label>
+                <input
+                  type="checkbox"
+                  name="categories"
+                  value="{{ category.id }}"
+                  {% if category.id in selected_categories %}
+                  checked
+                  {% endif %}
+                />
+                {{ category.name }}
+              </label>
+            </div>
+            {% endfor %}
+          </div>
+
+          <!-- Tags Filter -->
+          <div class="filter-group">
+            <h3>Tags</h3>
+            {% for tag in tags %}
+            <div class="filter-item">
+              <label>
+                <input
+                  type="checkbox"
+                  name="tags"
+                  value="{{ tag.id }}"
+                  {% if tag.id in selected_tags %}
+                  checked
+                  {% endif %}
+                />
+                {{ tag.name }}
+              </label>
+            </div>
+            {% endfor %}
+          </div>
+
+          <div style="display: flex; gap: 0.5rem; flex-direction: column">
+            <button
+              type="submit"
+              style="
+                padding: 0.5rem 1rem;
+                background: #007bff;
+                color: white;
+                border: none;
+                cursor: pointer;
+              "
+            >
+              Apply Filters
+            </button>
+            <a
+              href="{% url 'product_list' %}"
+              style="
+                padding: 0.5rem 1rem;
+                background: #dc3545;
+                color: white;
+                text-align: center;
+                text-decoration: none;
+                border: none;
+                cursor: pointer;
+              "
+            >
+              Clear All Filters
+            </a>
+          </div>
+        </div>
+
+        <!-- Products List -->
+        <div class="products">
+          <div class=""
+          style="display: flex; align-items: center; gap: 2rem;">
+            <h1>Total results: </h1>
+            {% if products %}
+            <h1>{{products|length}}</h1>
+            {% endif %}
+          </div>
+          {% if products %} {% for product in products %}
+          <div
+            style="margin-bottom: 2rem; padding: 1rem; border: 1px solid #eee"
+          >
+            <h3>{{ product.name }}</h3>
+            <p>{{ product.description }}</p>
+            <div style="margin-top: 0.5rem; color: #666">
+              <span style="margin-right: 1rem"
+                >Category: {{ product.category.name }}</span
+              >
+              <span
+                >Tags: {% for tag in product.tags.all %}
+                <em style="margin-right: 0.5rem">{{ tag.name }}</em>
+                {% endfor %}
+              </span>
+            </div>
+          </div>
+          {% endfor %} {% else %}
+          <p>No matches!!!</p>
+          {% endif %}
+        </div>
+      </div>
+    </form>
+  </body>
+</html>
