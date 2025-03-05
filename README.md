@@ -53,8 +53,7 @@ python3 manage.py runserver
 ### Usage
 
 - At <mark>/admin</mark>, you can edit the **Categories**, **Tags**, and **Products**
-  - login: admin
-  - p: admin
+  - Run `python manage.py createsuperuser` to access admin
 - at main view, you can:
   - search in the bar
   - filter by categories
