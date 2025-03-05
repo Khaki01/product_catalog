@@ -51,6 +51,11 @@ class Command(BaseCommand):
             {'name': 'Comfy Bed Sheets', 'description': 'Soft and breathable bed sheets made from premium cotton.', 'category': 'Home & Garden', 'tags': ['Premium', 'Remarcable']},
             {'name': 'Cookbook: Recipes to become like Baki', 'description': 'A collection of Gordon Ramsey approved and delicious recipes.', 'category': 'Books', 'tags': ['Bestseller', 'Gift']},
             {'name': 'Foldable Electric Bike', 'description': 'Eco-friendly and portable electric bike with long battery life.', 'category': 'Sports', 'tags': ['New', 'Eco-Friendly']},
+            {'name': 'Smart Mirror Pro', 'description': 'A futuristic mirror with AI fitness tracking and virtual assistant.', 'category': 'Home & Garden', 'tags': ['New', 'Premium', 'Remarcable']},
+            {'name': 'Ergonomic Office Chair', 'description': 'Designed for maximum comfort and productivity during long hours.', 'category': 'Home & Garden', 'tags': ['Premium', 'Sale']},
+            {'name': 'Solar-Powered Power Bank', 'description': 'Charge your devices anywhere with renewable solar energy.', 'category': 'Electronics', 'tags': ['Eco-Friendly', 'New', 'Wireless']},
+            {'name': 'Titanium Camping Cookware Set', 'description': 'Ultra-light and durable cookware set for outdoor adventures.', 'category': 'Kitchen', 'tags': ['Eco-Friendly', 'Limited Edition']},
+            {'name': 'Smart AI Pet Feeder', 'description': 'Automatic pet feeder with portion control and scheduling.', 'category': 'Home & Garden', 'tags': ['New', 'Trendy']},
         ]
 
         categories = {c.name: c for c in Category.objects.all()}

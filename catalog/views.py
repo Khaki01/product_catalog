@@ -12,18 +12,18 @@ def product_list(request):
     if search_query:
         products = products.filter(description__icontains=search_query)
     
-    # Category filter
+    # Category filter (AND lgoic)
     selected_categories = request.GET.getlist('categories')
     if selected_categories:
         products = products.filter(category__id__in=selected_categories)
     
-    # Tags filter (AND logic for multiple tags)
+    # Tags filter (AND logic)
     tag_filters = request.GET.getlist('tags')
     if tag_filters:
         products = products.filter(tags__id__in=tag_filters)
     
     context = {
-        'products': products,
+        'products': products.distinct(),
         'categories': Category.objects.all(),
         'tags': Tag.objects.all(),
         'selected_categories': [int(c) for c in selected_categories],
