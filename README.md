@@ -9,6 +9,17 @@
 - **Data Seeding**: Built-in command for sample data generation
 - **Admin Integration**: Django admin interface for data management
 
+## Assumptions
+* Each product belongs to a single category
+* Each product may have multiple tags
+* Selecting multiple categories will filter if product matches one of them
+* Selecting multiple tags will filter if product matches at least one of them
+* Search bar use only product descriptions (not names or other fields)
+* Filtering using search, category, and tag will filter in combination (AND). 
+* Use basic `icontains` query rather than full-text search engine
+* No pagination implemented for product results (only 25 items)
+
+
 ## Get Started
 
 ### Installation
