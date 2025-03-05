@@ -4,11 +4,6 @@ from django.core.management.base import BaseCommand
 
 from catalog.models import Category, Product, Tag
 
-# from faker import Faker
-
-
-# Could use faker, but the results are not to my liking
-# fake = Faker()
 
 class Command(BaseCommand):
     help = 'Create data instead of manual addition in adminpage'
@@ -30,6 +25,7 @@ class Command(BaseCommand):
             Tag.objects.get_or_create(name=name)
 
     def create_products(self):
+        # ChatGPT generated, with slight personal input:)
         product_data = [
             {'name': 'Smartphone XSuperNewUltra', 'description': 'Latest high-end smartphone in collaboration between apple, samsung, huawei, nokia, kaspi with OLED display and 5G.', 'category': 'Electronics', 'tags': ['New', 'Wireless', 'Premium']},
             {'name': 'Noise Adding Headphones', 'description': 'Experience immersive sound with active noise cancellation.', 'category': 'Electronics', 'tags': ['Trendy', 'Wireless', 'Premium']},

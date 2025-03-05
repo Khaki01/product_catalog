@@ -48,3 +48,7 @@ python3 manage.py runserver
   - search in the bar
   - filter by categories
   - filter by tags
+
+### Attributions
+* Data texts(description, name) are generated using ChatGPT
+* Initial template style generated with ChatGPT, further edited by myself
